@@ -17,6 +17,7 @@ INDENT = "     "
 
 def greet_user():
     """Print some initial text to the screen; request user's name."""
+    clear_screen()
     print("\n\n", INDENT, "Welcome to PyCalculate, version " + VERSION + ".")
     user_name = input(INDENT + "  Please enter your name to continue: ")
     return user_name
@@ -24,15 +25,15 @@ def greet_user():
 
 def request_input():
     """Ask user for numbers and an operator."""
-    number_1 = int(input("\n\n" + INDENT + "Please enter the first number: "))
-    number_2 = int(input(INDENT + "Please enter the second number: "))
-    operator_1 = str(input(INDENT + "Please enter + to add the numbers, - to subtract the second number from the first,"
+    number_1 = int(input("\n\n" + INDENT + "  Please enter the first number: "))
+    number_2 = int(input(INDENT + "  Please enter the second number: "))
+    operator_1 = str(input(INDENT + "  Please enter + to add the numbers, - to subtract the second number from the first,"
                                     " x to multiply the numbers, or / to divide the first number by the second. "))
 
     # store user input in a dictionary to have a single object for the function to return
     user_input = {"first_number": number_1, "second_number": number_2, "operator": operator_1}
 
-    return user_input
+    do_calculations(user_input)
 
 
 def do_calculations(user_input):
@@ -55,6 +56,26 @@ def do_calculations(user_input):
     else:
         print("ERROR: Unknown operation selected.")
 
+    more_calculations()
+
+
+def more_calculations():
+    """Prompt the user to choose between additional calculations & quitting the program."""
+    more_calc_input = "invalid"
+    while more_calc_input != "y" and more_calc_input != "n":
+        print("\n\n", INDENT, "Would you like to run additional calculations?")
+        more_calc_input = input( INDENT + "  Please enter 'y' to perform more calculations, or 'n' to quit the program: ")
+        try:
+            more_calc_input = more_calc_input.lower()
+        except:
+            pass
+            # TODO: Better error handling
+    if more_calc_input == "y":
+        clear_screen()
+        request_input()
+    elif more_calc_input == "n":
+        quit_calculator()
+
 
 def clear_screen():
     """Clears the screen, regardless of the OS."""
@@ -71,7 +92,4 @@ def quit_calculator():
 
 if __name__ == '__main__':
     greet_user()
-    clear_screen()
-    user_input = request_input()
-    do_calculations(user_input)
-    quit_calculator()
+    request_input()
