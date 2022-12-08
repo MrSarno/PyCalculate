@@ -54,7 +54,8 @@ def do_calculations(user_input):
         clear_screen()
         print("\n\n", INDENT, number_1, user_input.get("operator"), number_2, "=", number_1 / number_2)
     else:
-        print("ERROR: Unknown operation selected.")
+        print("\n\n", INDENT, "ERROR: Unknown operation selected.")
+        quit_calculator()
 
     more_calculations()
 
