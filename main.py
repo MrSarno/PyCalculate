@@ -19,8 +19,6 @@ def greet_user():
     """Print some initial text to the screen; request user's name."""
     clear_screen()
     print("\n\n", INDENT, "Welcome to PyCalculate, version " + VERSION + ".")
-    user_name = input(INDENT + "  Please enter your name to continue: ")
-    return user_name
 
 
 def request_input():
@@ -85,6 +83,7 @@ def clear_screen():
 
 def quit_calculator():
     """Bring the program to an end."""
+    print("\n")
     input(INDENT + "  Press Enter to close...")
     sys.exit()
 
