@@ -45,10 +45,10 @@ def do_calculations(user_input):
     elif user_input.get("operator").__eq__("-"):
         clear_screen()
         print("\n\n", INDENT, number_1, user_input.get("operator"), number_2, "=", number_1 - number_2)
-    elif user_input.get("operator").__eq__("x"):
+    elif user_input.get("operator").__eq__("x") or user_input.get("operator").__eq__("X") or user_input.get("operator").__eq__("*"):
         clear_screen()
         print("\n\n", INDENT, number_1, user_input.get("operator"), number_2, "=", number_1 * number_2)
-    elif user_input.get("operator").__eq__("/"):
+    elif user_input.get("operator").__eq__("/") or user_input.get("operator").__eq__("÷"):
         clear_screen()
         print("\n\n", INDENT, number_1, user_input.get("operator"), number_2, "=", number_1 / number_2)
     else:
